@@ -1,11 +1,17 @@
-
-.fast{
+.fast {
     -webkit-animation-duration: 0.3s;
     animation-duration: 0.3s;
-    -webkit-animation-fill-mode:both;
-    animation-fill-mode:both
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
 }
 
 #themecolors .selector {
     cursor: pointer;
+}
+
+#google-sign {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
