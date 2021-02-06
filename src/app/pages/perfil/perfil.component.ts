@@ -33,14 +33,14 @@ export class PerfilComponent implements OnInit {
   actualizarPerfil() {
     console.log(this.perfilForm.value);
     this.usuarioService.actualizarPerfil(this.perfilForm.value).subscribe(() => {
-      
-      Swal.fire(
-        'Actualizar', 'Perfil de Usuario Actualizado', 'success'
-      );
-      //para que se actualize el tiempo real el nombre en el dashboard
+
+      //TODO para que se actualize el tiempo real el nombre en el dashboard
       const { nombre, email } = this.perfilForm.value;
       this.usuario.nombre = nombre;
       this.usuario.email = email;
+      Swal.fire('Actualizar', 'Perfil de Usuario Actualizado', 'success');
+    }, (err) => {
+      Swal.fire('Error', err.error.msg, 'error');
     });
   }
 
@@ -58,7 +58,12 @@ export class PerfilComponent implements OnInit {
   }
 
   subirImagen() {
-    this.fileUploadService.actualizarFoto(this.imagenSubir, 'usuarios', this.usuario.uid).then(img => this.usuario.img = img);
+    this.fileUploadService.actualizarFoto(this.imagenSubir, 'usuarios', this.usuario.uid).then(img => {
+      this.usuario.img = img;
+      Swal.fire('Actualizando', 'Imagen de Uusario Actualizada', 'success');
+    }).catch(err => {
+        Swal.fire('Error', 'No se pudo subir la imagen', 'error');
+    });
   }
 
 }
