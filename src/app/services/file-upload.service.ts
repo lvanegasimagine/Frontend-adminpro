@@ -25,10 +25,15 @@ export class FileUploadService {
       });
 
       const data = await resp.json();
-      console.log(data);
-      return 'nombre de la image';
+      if (data.ok) {
+        return data.nombreArchivo;
+      }
+      else {
+        return data.msg;
+        return false;
+      }
     } catch (error) {
-      console.log('error');
+      console.log(error);
       return false;
     }
   }
