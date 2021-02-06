@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators, FormGroup, FormsModule } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
 
@@ -14,19 +14,18 @@ declare const gapi: any;
 export class LoginComponent implements OnInit {
 
   public formSubmitted = false;
-  public email: string;
-  public remember: boolean;
   public auth2: any;
+  // public email: string;
+  // public remember: boolean;
   
   public loginForm = this.fb.group({
-    email: [this.email, [ Validators.required, Validators.minLength(3)]],
+    email: [localStorage.getItem('email') || '', [ Validators.required, Validators.email]],
     password: ['', [Validators.required]],
-    remember: [this.remember]
+    remember: [false]
   });
 
-
   constructor(private router: Router, private ngZone: NgZone, private fb: FormBuilder, private usuarioService: UsuarioService) {
-    
+
   }
 
   campoNoValido(campo: string): boolean {
@@ -39,31 +38,30 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderButton();
-    this.email = localStorage.getItem('email') || '';
-    if (this.email.length > 0) {
-      this.remember = true;
-      console.log(this.remember);
-    } else {
-      this.remember = false;
-    }
   }
 
   login() {
-    this.formSubmitted = true;
+    // this.formSubmitted = true;
 
     if (this.loginForm.invalid) {
       return;
     }
     else {
-      this.usuarioService.loginUsuario(this.loginForm.value, this.loginForm.value.remember).subscribe((resp) => {
-        setTimeout(() => {
-          Swal.fire('Exito', 'Usuario Logueado Exitosamente', 'success');
-          this.ngZone.run(() => {
-            this.router.navigate(['/dashboard']);
-          });
-        }, 1000);
+      this.usuarioService.loginUsuario( this.loginForm.value )
+      .subscribe( resp => {
+
+        if ( this.loginForm.get('remember').value ){ 
+          localStorage.setItem('email', this.loginForm.get('email').value );
+        } else {
+          localStorage.removeItem('email');
+        }
+
+        // Navegar al Dashboard
+        this.router.navigateByUrl('/');
+
       }, (err) => {
-        Swal.fire('Error', err.error.msg, 'error');
+        // Si sucede un error
+        Swal.fire('Error', err.error.msg, 'error' );
       });
     }
   }
@@ -90,13 +88,17 @@ export class LoginComponent implements OnInit {
   };
 
   attachSignin(element) {
-    console.log(element.id);
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
         const id_token = googleUser.getAuthResponse().id_token;
-        this.usuarioService.loginGoogle(id_token).subscribe(resp => this.router.navigateByUrl('/'));
+        this.usuarioService.loginGoogle(id_token).subscribe(resp => {
+          // Navegar al Dashboard
+          this.ngZone.run(() => {
+            this.router.navigateByUrl('/');
+          });
+        });
       }, (error) => {
           alert(JSON.stringify(error, undefined, 2));
-        });
+      });
   }
 }
