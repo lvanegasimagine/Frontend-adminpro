@@ -43,8 +43,8 @@
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.role}}</td>
                                 <td>
-                                    <span class="label label-danger">Google</span>
-                                    <span class="label label-info">Email</span>
+                                    <span *ngIf="usuario.google" class="label label-danger">Google</span>
+                                    <span *ngIf="!usuario.google" class="label label-info">Email</span>
                                 </td>
                                 <td>July 11, 2015</td>
                                 <td class="text-nowrap">
@@ -54,8 +54,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-secondary">Anteriores</button> &nbsp;
-                    <button class="btn btn-secondary">Siguiente</button>
+                    <button class="btn btn-secondary" (click)="cambiarPagina(-5)">Anteriores</button> &nbsp;
+                    <button class="btn btn-secondary" (click)="cambiarPagina(5)">Siguiente</button>
                 </div>
             </div>
         </div>
