@@ -16,7 +16,7 @@ const base_url = environment.base_url;
 @Injectable({
   providedIn: 'root'
 })
-  
+
 export class UsuarioService {
 
   public auth2: any;
