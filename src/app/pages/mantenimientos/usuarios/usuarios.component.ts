@@ -59,6 +59,12 @@ export class UsuariosComponent implements OnInit {
   }
   
   eliminarUsuario(usuario: any) {
+
+    if (usuario.uid === this.usuarioService.usuario.uid) {
+      return Swal.fire('Error', 'Usuario Logueado Actualmente', 'error');
+    }
+    console.log('esto no se tiene que ver');
+    return;
     Swal.fire({
       title: 'Borrar Usuario?',
       text: `Esta a punto de borrar a ${usuario.nombre}`,
