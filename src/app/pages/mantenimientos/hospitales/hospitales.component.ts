@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { ModalImagenService } from 'src/app/services/modal-imagen.service';
 import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { BusquedasService } from 'src/app/services/busquedas.service';
 
 @Component({
   selector: 'app-hospitales',
@@ -16,14 +17,28 @@ export class HospitalesComponent implements OnInit {
 
   public hospitales: Hospital[] = [];
   public cargando: boolean = true;
-  private imgSubs: Subscription;
+  public imgSubs: Subscription;
+  public hospitalesTemp: Hospital[] = [];
 
 
-  constructor(public hospitalService: HospitalService, private modalImagenService: ModalImagenService) { }
+  constructor(public hospitalService: HospitalService, private busquedaService: BusquedasService,
+              private modalImagenService: ModalImagenService) { }
 
   ngOnInit(): void {
     this.cargarHospital();
     this.imgSubs = this.modalImagenService.nuevaImagen.pipe(delay(200)).subscribe(img => this.cargarHospital());
+  }
+
+  buscar(termino: string) {
+
+    if (termino.length === 0) {
+      return this.cargarHospital();
+      // return this.hospitales = this.hospitalesTemp;
+    }
+
+    this.busquedaService.buscar('hospitales', termino).subscribe(resultados => {
+      this.hospitales = resultados;
+    });
   }
 
   cargarHospital() {
@@ -36,7 +51,7 @@ export class HospitalesComponent implements OnInit {
   }
 
   async crearHospital() {
-    const {value} = await Swal.fire<string>({
+    const {value = ''} = await Swal.fire<string>({
       input: 'text',
       inputLabel: 'Ingrese nombre del nuevo Hospital',
       showCancelButton: true
