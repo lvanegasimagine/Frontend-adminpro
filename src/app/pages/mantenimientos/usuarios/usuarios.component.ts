@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { ModalImagenService } from 'src/app/services/modal-imagen.service';
 import { delay } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-usuarios',
@@ -63,7 +64,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       return this.usuarios = this.usuariosTemp;
     }
 
-    this.busquedaService.buscar('usuarios', termino).subscribe(resultados => {
+    this.busquedaService.buscar('usuarios', termino).subscribe((resultados: Usuario[]) => {
       this.usuarios = resultados;
     });
   }

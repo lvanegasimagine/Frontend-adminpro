@@ -36,7 +36,7 @@ export class HospitalesComponent implements OnInit {
       // return this.hospitales = this.hospitalesTemp;
     }
 
-    this.busquedaService.buscar('hospitales', termino).subscribe(resultados => {
+    this.busquedaService.buscar('hospitales', termino).subscribe((resultados: Hospital[]) => {
       this.hospitales = resultados;
     });
   }
@@ -65,7 +65,6 @@ export class HospitalesComponent implements OnInit {
     } else {
       return;
     }
-
   }
 
   actualizarHospital(hospital: Hospital) {
