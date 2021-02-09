@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<div class="row animated fadeIn fast">
+<div class="row animated fadeIn fast" *ngIf="cargando">
     <div class="col-12">
         <div class="alert alert-info text-center">
             <h4 class="alert-heading">Cargando</h4>
@@ -18,11 +18,11 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="!cargando">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Hospitales</h4>
+                <h4 class="card-title">Hospitales {{hospitales.length}}</h4>
                 <h6 class="card-subtitle">Hospitales Registrados</h6>
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -34,20 +34,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>img</td>
+                            <tr *ngFor="let hospital of hospitales">
+                                <td>{{hospital.img}}</td>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Nombre del Hospital" />
+                                    <input type="text" class="form-control" placeholder="Nombre del Hospital" [(ngModel)]="hospital.nombre" />
                                 </td>
                                 <td class="text-nowrap text-center">
-                                    <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a href="#" data-toggle="tooltip" data-original-title="Guardar Cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                                     <a href="#" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-secondary">Anteriores</button> &nbsp;
-                    <button class="btn btn-secondary">Siguiente</button>
+                    <!-- <button class="btn btn-secondary">Anteriores</button> &nbsp;
+                    <button class="btn btn-secondary">Siguiente</button> -->
                 </div>
             </div>
         </div>
