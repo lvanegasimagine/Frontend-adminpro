@@ -22,8 +22,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Hospitales {{hospitales.length}}</h4>
-                <h6 class="card-subtitle">Hospitales Registrados</h6>
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Hospitales ({{hospitales.length}})</h4>
+                        <h6 class="card-subtitle">Hospitales Registrados</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-primary"><i class="fas fa-hospital    "></i> Crear Hospital</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
