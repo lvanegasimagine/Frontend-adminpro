@@ -1,5 +1,4 @@
 import { environment } from 'src/environments/environment';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 const base_url = environment.base_url;
 export class Usuario {

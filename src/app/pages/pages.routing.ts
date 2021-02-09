@@ -11,6 +11,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { AuthGuard } from '../guard/auth.guard';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 
 const routes: Routes = [
     { 
@@ -27,7 +29,9 @@ const routes: Routes = [
             { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil' } },
 
             //Mantenimientos
-            { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuario de Aplicación' }},
+            { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mtto. Usuario' }},
+            { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mtto. Hospitales' }},
+            { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mtto. Medicos' }},
 
         ]
     },
