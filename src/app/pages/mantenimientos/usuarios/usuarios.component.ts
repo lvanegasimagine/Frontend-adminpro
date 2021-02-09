@@ -3,6 +3,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario.model';
 import { BusquedasService } from '../../../services/busquedas.service';
 import Swal from 'sweetalert2';
+import { ModalImagenService } from 'src/app/services/modal-imagen.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -18,7 +19,8 @@ export class UsuariosComponent implements OnInit {
   public desde: number = 0;
   public cargando: boolean = true;
 
-  constructor(private usuarioService: UsuarioService, private busquedaService: BusquedasService) { }
+  constructor(private usuarioService: UsuarioService, private busquedaService: BusquedasService,
+              private modalImagenService: ModalImagenService) { }
 
   ngOnInit(): void {
     this.cargarUsuario();
@@ -90,5 +92,10 @@ export class UsuariosComponent implements OnInit {
     this.usuarioService.actualizarRoleUsuario(usuarioRole).subscribe(resp => {
       console.log(resp);
     });
+  }
+
+  abrirModal(usuario: Usuario) {
+    console.log(usuario);
+    this.modalImagenService.abrirModal();
   }
 }

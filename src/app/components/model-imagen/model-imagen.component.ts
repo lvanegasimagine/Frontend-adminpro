@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalImagenService } from '../../services/modal-imagen.service';
 
 @Component({
   selector: 'app-model-imagen',
@@ -8,14 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModelImagenComponent implements OnInit {
 
-  public ocultarModal: boolean = false;
-
-  constructor() { }
+  constructor(public modalImagenService: ModalImagenService) { }
 
   ngOnInit(): void {
   }
 
   cerrarModal() {
-    this.ocultarModal = true;
+    this.modalImagenService.cerrarModal();
   }
 }
