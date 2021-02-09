@@ -24,6 +24,7 @@ export class HospitalesComponent implements OnInit {
     this.hospitalService.cargarHospital().subscribe(hospitales => {
       this.cargando = false;
       this.hospitales = hospitales;
+      console.log(hospitales);
     });
   }
 
