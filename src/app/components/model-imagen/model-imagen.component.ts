@@ -43,7 +43,7 @@ export class ModelImagenComponent implements OnInit {
     const tipo = this.modalImagenService.tipo;
 
     this.fileUploadService.actualizarFoto(this.imagenSubir, tipo, id).then(img => {
-      Swal.fire('Actualizando', 'Imagen de Usuario Actualizada', 'success');
+      Swal.fire('Actualizando', `Imagen de ${tipo} Actualizada`, 'success');
       this.modalImagenService.nuevaImagen.emit(img);
       this.cerrarModal();
     }).catch(err => {
