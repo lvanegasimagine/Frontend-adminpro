@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HospitalService } from '../../../services/hospital.service';
 import { Hospital } from 'src/app/models/hospital.model';
 import Swal from 'sweetalert2';
@@ -13,7 +13,7 @@ import { BusquedasService } from 'src/app/services/busquedas.service';
   styles: [
   ]
 })
-export class HospitalesComponent implements OnInit {
+export class HospitalesComponent implements OnInit, OnDestroy {
 
   public hospitales: Hospital[] = [];
   public cargando: boolean = true;
@@ -27,6 +27,10 @@ export class HospitalesComponent implements OnInit {
   ngOnInit(): void {
     this.cargarHospital();
     this.imgSubs = this.modalImagenService.nuevaImagen.pipe(delay(200)).subscribe(img => this.cargarHospital());
+  }
+
+  ngOnDestroy(): void {
+    this.imgSubs.unsubscribe();
   }
 
   buscar(termino: string) {
