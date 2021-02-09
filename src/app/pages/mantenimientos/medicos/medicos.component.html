@@ -29,7 +29,7 @@
                     </div>
                     <div class="col">
                         <div class="text-right">
-                            <a class="btn btn-primary" [routerLink]="['/dashboard/medico/nuevo']" routerLinkActive="router-link-active"><i class="fas fa-hospital"></i> Crear Hospital</a>
+                            <a class="btn btn-primary" [routerLink]="['/dashboard/medico/nuevo']" routerLinkActive="router-link-active"> <i class="fas fa-laptop-medical"></i> Crear Médico</a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 <td>{{medico.nombre}}</td>
                                 <td class="text-nowrap text-center">
                                     <a [routerLink]="['/dashboard/medico', medico._id]" routerLinkActive="router-link-active" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i></a>
-                                    <a data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a class="cursor" (click)="eliminarMedico(medico)" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
                         </tbody>
