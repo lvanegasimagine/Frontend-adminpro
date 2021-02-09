@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 const base_url = environment.base_url;
@@ -9,9 +9,11 @@ const base_url = environment.base_url;
 export class ModalImagenService {
 
   private _ocultarModal: boolean = true;
-  public tipo: string;
+  public tipo: 'usuarios' | 'hospitales' | 'medicos';
   public id: string;
   public img: string;
+
+  public nuevaImagen: EventEmitter<string> = new EventEmitter<string>();
 
   get ocultarModal() {
     return this._ocultarModal;
