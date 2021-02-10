@@ -69,7 +69,7 @@ export class MedicosComponent implements OnInit, OnDestroy {
           this.cargarMedico();
           Swal.fire(
             'Eliminado',
-            `El ${medico.nombre} fue eliminado exitosamente`,
+            `El medico ${medico.nombre} fue eliminado exitosamente`,
             'success'
           );
         });
