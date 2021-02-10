@@ -6,6 +6,7 @@ import { HospitalService } from 'src/app/services/hospital.service';
 import { Hospital } from '../../../models/hospital.model';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-medico',
@@ -42,7 +43,7 @@ export class MedicoComponent implements OnInit {
       return;
     }
 
-    this.medicoService.cargarMedicosById(id).subscribe(medico => {
+    this.medicoService.cargarMedicosById(id).pipe(delay(200)).subscribe(medico => {
       if (!medico) {
         return this.router.navigateByUrl(`dashboard/medicos`);
       }
