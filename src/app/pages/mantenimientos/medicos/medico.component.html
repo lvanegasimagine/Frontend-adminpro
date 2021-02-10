@@ -6,11 +6,11 @@
                 <h6 class="card-subtitle">Actualizar Información</h6>
                 <form class="form-horizontal p-t-20" [formGroup]="medicoForm" (ngSubmit)="guardarMedico()">
 
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="medicoSeleccionado">
                         <label for="exampleInputuname" class="col-sm-3 control-label">Foto</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <img class="w200" src="http://localhost:3000/api/upload/medicos/no-image.jpg" alt="">
+                                <img class="w200" [src]="medicoSeleccionado.img | imagen:'medicos'" alt="">
                             </div>
                         </div>
                     </div>
