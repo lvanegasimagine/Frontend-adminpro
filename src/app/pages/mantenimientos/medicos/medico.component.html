@@ -1,1 +1,54 @@
-<p>medico works!</p>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Medico</h4>
+                <h6 class="card-subtitle">Actualizar Información</h6>
+                <form class="form-horizontal p-t-20">
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Foto</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <img class="w200" src="http://localhost:3000/api/upload/medicos/no-image.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Nombre</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text" class="form-control" id="exampleInputuname" placeholder="Nombre del Medico">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail1" class="col-sm-3 control-label">Hospital</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option>Hospital 1</option>
+                                    <option>Hospital 2</option>
+                                    <option>Hospital 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"><i class="fas fa-save"></i> Guardar</button>
+                    <!-- <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hospital</h4>
+                <h6 class="card-subtitle">Hospital Asignado</h6>
+                <img class="w200" src="http://localhost:3000/api/upload/medicos/no-image.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
