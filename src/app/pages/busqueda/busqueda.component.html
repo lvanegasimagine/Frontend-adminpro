@@ -3,12 +3,12 @@
         <div class="card">
             <div class="card-body">
                 <h3>Usuarios</h3>
-                <div class="alert alert-info">
+                <div class="alert alert-info animated fadeIn fast" *ngIf="usuarios.length === 0">
                     <p class="mb-0">
                         No hay usuarios con ese termino
                     </p>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="usuarios.length > 0">
                     <table class="table">
                         <thead>
                             <tr>
@@ -17,9 +17,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>6</td>
-                                <td>Nigam</td>
+                            <tr *ngFor="let usuario of usuarios" class="animated fadeIn fast">
+                                <td>
+                                    <img class="w75" [src]="usuario.img | imagen:'usuarios'" alt="">
+                                </td>
+                                <td>{{usuario.nombre}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -31,12 +33,12 @@
         <div class="card">
             <div class="card-body">
                 <h3>Medicos</h3>
-                <div class="alert alert-info">
+                <div class="alert alert-info animated fadeIn fast" *ngIf="medicos.length === 0">
                     <p class="mb-0">
                         No hay medicos con ese termino
                     </p>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="medicos.length > 0">
                     <table class="table">
                         <thead>
                             <tr>
@@ -45,9 +47,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>6</td>
-                                <td>Nigam</td>
+                            <tr *ngFor="let medico of medicos" class="animated fadeIn fast">
+                                <td>
+                                    <img class="w75" [src]="medico.img | imagen:'medicos'" alt="">
+                                </td>
+                                <td>{{medico.nombre}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -58,13 +62,13 @@
     <div class="col-4">
         <div class="card">
             <div class="card-body">
-                <h3>Hospital</h3>
-                <div class="alert alert-info">
-                    <p class="mb-0">
-                        No hay hospital con ese termino
+                <h3>Hospitales</h3>
+                <div class="alert alert-info animated fadeIn fast" *ngIf="hospitales.length===0 ">
+                    <p class="mb-0 ">
+                        No hay hospitales con ese termino
                     </p>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive " *ngIf="hospitales.length> 0">
                     <table class="table">
                         <thead>
                             <tr>
@@ -73,9 +77,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>6</td>
-                                <td>Nigam</td>
+                            <tr *ngFor="let hospital of hospitales" class="animated fadeIn fast">
+                                <td>
+                                    <img class="w75" [src]="hospital.img | imagen:'hospitales'" alt="">
+                                </td>
+                                <td>{{hospital.nombre}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -25,7 +25,7 @@ export class BusquedasService {
       headers: {
         'x-token': this.token
       }
-    }
+    };
   }
 
   private transformarUsuario(resultados: any[]): Usuario[] {
@@ -55,5 +55,10 @@ export class BusquedasService {
             break;
         }
       }));
+  }
+
+  busquedaGlobal(termino: string) {
+    const url = `${base_url}/todo/${termino}`;
+    return this.http.get(url, this.headers);
   }
 }
