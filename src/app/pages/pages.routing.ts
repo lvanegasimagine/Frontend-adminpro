@@ -14,17 +14,19 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const routes: Routes = [
-    { 
-        path: 'dashboard', 
+    {
+        path: 'dashboard',
         component: PagesComponent,
         canActivate: [AuthGuard],
         children: [
             { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+            { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de cuenta' }},
+            { path: 'buscar/:termino', component: BusquedaComponent, data: { titulo: 'Busquedas' }},
             { path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBar' }},
             { path: 'grafica1', component: Grafica1Component, data: { titulo: 'Gráfica #1' }},
-            { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de cuenta' }},
             { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }},
             { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
             { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil' } },
