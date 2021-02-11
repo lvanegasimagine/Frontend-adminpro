@@ -20,7 +20,9 @@
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">PERSONAL</li>
 
-                <li *ngFor="let item of menuItems">
+                <!-- el ngfor comentado recarga el arreglo del sidebarservice -->
+                <!-- <li *ngFor="let item of menuItems"> -->
+                <li *ngFor="let item of sidebarService.menu">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="{{item.icono}}"></i>
                         <span class="hide-menu"> 

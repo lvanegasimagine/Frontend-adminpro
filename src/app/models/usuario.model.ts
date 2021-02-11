@@ -10,7 +10,7 @@ export class Usuario {
     public google?: boolean,
     public role?: string,
     public uid?: string) { }
-  
+
   imprimirUsuario() {
     console.log(this.nombre);
   }
