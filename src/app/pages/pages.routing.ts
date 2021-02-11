@@ -15,6 +15,7 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../guard/admin.guard';
 
 const routes: Routes = [
     {
@@ -32,10 +33,12 @@ const routes: Routes = [
             { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil' } },
 
             //Mantenimientos
-            { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mtto. Usuario' }},
             { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mtto. Hospitales' }},
             { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mtto. Medicos' }},
             { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Mtto. Medicos' }},
+
+            // Ruta Protegida solo ADMIN
+            { path: 'usuarios', canActivate: [AdminGuard], component: UsuariosComponent, data: { titulo: 'Mtto. Usuario' } },
         ]
     },
 ];
